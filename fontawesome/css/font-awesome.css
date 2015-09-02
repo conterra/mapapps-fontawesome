@@ -11,6 +11,7 @@
   font-weight: normal;
   font-style: normal;
 }
+.fa, .dijitIcon[class*="fa-"], .ctAppRoot .dijitIcon[class*="fa-"] {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -1277,7 +1278,6 @@
 .fa-male:before {
   content: "\f183";
 }
-.fa-gittip:before {
 .fa-gittip:before,
 .fa-gratipay:before {
   content: "\f184";

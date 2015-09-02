@@ -1,0 +1,172 @@
+{
+	"load": {
+		"allowedBundles": ["fontawesome",
+		"custominfo",
+		"system",
+		"map",
+		"themes",
+		"templates",
+		"templatelayout",
+		"windowmanager",
+		"console",
+		"coordinatetransformer",
+		"notifier",
+		"agssearch",
+		"resultcenter",
+		"contentviewer",
+		"selection",
+		"infoviewer",
+		"toolset",
+		"toolrules"]
+	},
+	"bundles": {
+		"map": {
+			"MappingResourceRegistryFactory": {
+				"_knownServices": {
+					"services": [{
+						"id": "worldTopo",
+						"type": "AGS_TILED",
+						"thumbnailPostfix": "/tile/11/676/1067",
+						"url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
+					},
+					{
+						"id": "worldTopo",
+						"type": "AGS_TILED",
+						"url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
+					},
+					{
+						"id": "streets",
+						"type": "AGS_TILED",
+						"url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
+					}]
+				}
+			},
+			"MapModelFactory": {
+				"_configData": {
+					"maps": [{
+						"id": "default",
+						"glass_pane": [],
+						"operationalLayer": [],
+						"baseLayer": [
+						{
+							"id": "background1",
+							"title": "${map.base.topo.title}",
+							"service": "worldTopo",
+							"layers": ["*"],
+							"enabled": true
+						}]
+					}]
+				}
+			},
+			"MapState": {
+				"initialExtent": {
+					"xmin": 619578.155777645,
+					"ymin": 5965284.64146539,
+					"xmax": 1733575.1859872,
+					"ymax": 7373509.3231059,
+					"spatialReference": {
+						"wkid": 3857
+					}
+				}
+			}
+		},
+		"agssearch": {
+			"AGSStore": [{
+               "title": "${agssearch.countries.title}",
+               "description": "${agssearch.countries.description}",
+               "omniSearchLabelAttr": "MIN_CNTRY_",
+               "omniSearchSearchAttr": "MIN_CNTRY_",
+               "idProperty": "OBJECTID_12",
+               "url": "http://water.discomap.eea.europa.eu/arcgis/rest/services/BathingWater/BathingWater_Dyna_WM/MapServer/2",
+               "useIn": [
+                  "omnisearch",
+                  "selection"
+               ],
+               "filterOptions": {
+                  "suggestContains": true
+               },
+               "omniSearchTypingDelay": 500,
+               "omniSearchPageSize": 20,
+               "omniSearchDefaultLabel": "${agssearch.countries.placeHolder}",
+               "fetchIdProperty": true,
+               "id": "bathingwater_1"
+            }]
+		},
+		"selection": {
+			"SelectionTool": [{
+				"id": "selectCountryItems",
+				"storeId": "bathingwater_1",
+				"title": "Laender",
+				"iconClass": "fa-coffee"
+			},
+			{
+				"id": "selectCountryItems2",
+				"storeId": "bathingwater_1",
+				"title": "Laender (No Cache Store)",
+				"iconClass": "fa-paper-plane",
+				"decorateWithFilter": true
+			},
+			{
+				"id": "selectAirportItems",
+				"storeId": "bathingwater_1",
+				"title": "Flughaefen",
+				"iconClass": "fa-truck"
+			},
+			{
+				"id": "selectCountryItemsByPoint",
+				"storeId": "bathingwater_1",
+				"title": "Laender (Punkt)",
+				"iconClass": "fa-wheelchair",
+				"geoType": "Point"
+			},
+			{
+				"id": "selectCountryItemsByPointTolerance",
+				"storeId": "bathingwater_1",
+				"title": "Laender (Punkt - Tolerance 5)",
+				"iconClass": "fa-wifi",
+				"geoType": "Point",
+				"clickTolerance": 5
+			},
+			{
+				"id": "selectAirAndHeliportsItems",
+				"storeId": "bathingwater_1",
+				"title": "Flugh\u00E4fen und Heliports in Deutschland",
+				"iconClass": "fa-angellist"
+			}]
+		},
+		"toolset": {
+			"ToolsetManager": {
+				"toolsets": [{
+					"id": "default_tools",
+					"title": "Some Fontawesome Icons",
+					"tools": ["selectAirportItems",
+					"selectCountryItems",
+					"selectCountryItems2",
+					"selectCountryItemsByPoint",
+					"selectCountryItemsByPointTolerance",
+					"selectAirAndHeliportsItems"],
+					"container": "map"
+				}]
+			}
+		},
+		"custominfo": {
+			"CustomInfoToggleTool": [{
+				"id": "infoTool",
+				"title": "App Info",
+				"toolClass": "ctInfo",
+				"widgetSettings": {
+					"content": "This sample shows how font awesome icons can be integrated to map.apps as themes extension. <a target='_blank' href='http://fortawesome.github.io/Font-Awesome/icons/'>All available (479 icons) can be seen here</a>. Please note, that the tools are only placeholders in this app that all perform the same selection.",
+					"window": {
+						"marginBox": {
+							"l": 50
+						}
+					}
+				},
+				"rules": {
+					"groups": "custominfo",
+					"activateOnStartup": true
+				}
+			}]
+		}
+	}
+}

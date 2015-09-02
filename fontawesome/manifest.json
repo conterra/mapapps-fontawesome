@@ -1,6 +1,6 @@
 {
     "Bundle-SymbolicName": "fontawesome",
-    "Bundle-Version": "1.0.0",
+    "Bundle-Version": "2.0.0",
     "Bundle-Name": "Font-Awesome Icon Set",
     "Bundle-Description": "This bundles makes the font-awesome web-font icon set usable inside map.apps. See http://fortawesome.github.io/Font-Awesome/icons for more info.",
     "Bundle-Localization": [],

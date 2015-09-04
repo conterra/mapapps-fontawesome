@@ -13,4 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-define(["."], {});
+define({ root:
+/*
+ * COPYRIGHT 2014 con terra GmbH Germany
+ */
+({
+    bundleName: "Font-Awesome Icon Set",
+    bundleDescription: "This bundles makes the font-awesome web-font icon set usable inside map.apps. See http://fortawesome.github.io/Font-Awesome/icons for more info."
+}),
+"de":true
+});

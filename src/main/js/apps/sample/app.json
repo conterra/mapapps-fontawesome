@@ -1,5 +1,9 @@
 {
     "load": {
+        "bundleLocations": [
+            "bundles",
+            "localbundles"
+        ],
         "allowedBundles": [
             "fontawesome",
             "custominfo",

@@ -6,6 +6,6 @@
     "Product-Name": "map.apps Developer Network",
     "CSS-Themes-Extension": [{
         "name": "*",
-        "files": ["./css/font-awesome.css"]
+        "files": ["./css/font-awesome.min.css"]
     }]
 }

@@ -1,11 +1,11 @@
 {
     "Bundle-SymbolicName": "fontawesome",
-    "Bundle-Version": "2.0.0",
+    "Bundle-Version": "2.1.0",
     "Bundle-Name": "${bundleName}",
     "Bundle-Description": "${bundleDescription}",
     "Product-Name": "map.apps Developer Network",
     "CSS-Themes-Extension": [{
-        "name": "*",
-        "files": ["./css/font-awesome.min.css"]
-    }]
+            "name": "*",
+            "files": ["./css/font-awesome.min.css"]
+        }]
 }

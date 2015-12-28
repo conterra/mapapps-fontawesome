@@ -467,7 +467,7 @@
         <js.build.outputPath>${project.build.directory}/${project.artifactId}/js</js.build.outputPath>
         <!-- mapapps.version -->
         <mapapps.version>3.2.1</mapapps.version>
-        <!-- java lib versions -->
+       <!-- java lib versions -->
         <ct.jsregistry.version>1.0.9</ct.jsregistry.version>
         <ct.jsrt-test.version>1.0.6</ct.jsrt-test.version>
 

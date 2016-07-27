@@ -20,7 +20,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.conterra.devnet</groupId>
     <artifactId>ct-mapapps-fontawesome</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>3.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <!-- DISABLE repositories and pluginRepositories if inside the con terra! -->
     <repositories>
@@ -251,7 +251,7 @@
                     <!-- add here properties which are used in plugin configuration resolution -->
                     <properties>
                         <!-- deployment of map.apps installation -->
-                        <mapapps.remote.base>http://vsdev1114.esri-de.com/ct-mapapps-webapp-3.2.1</mapapps.remote.base>
+                        <mapapps.remote.base>http://vsdev1114.esri-de.com/ct-mapapps-webapp-3.5.2</mapapps.remote.base>
                     </properties>
                 </configuration>
             </plugin>
@@ -466,10 +466,10 @@
         <!-- dojo custom build parameters -->
         <js.build.outputPath>${project.build.directory}/${project.artifactId}/js</js.build.outputPath>
         <!-- mapapps.version -->
-        <mapapps.version>3.2.1</mapapps.version>
+        <mapapps.version>3.5.2</mapapps.version>
        <!-- java lib versions -->
-        <ct.jsregistry.version>1.0.9</ct.jsregistry.version>
-        <ct.jsrt-test.version>1.0.6</ct.jsrt-test.version>
+        <ct.jsregistry.version>1.0.15</ct.jsregistry.version>
+        <ct.jsrt-test.version>1.0.7</ct.jsrt-test.version>
 
         <!-- the default app, replaced in the *.html files to switch app names-->
         <default.app.name>sample</default.app.name>

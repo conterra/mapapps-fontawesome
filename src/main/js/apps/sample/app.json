@@ -92,6 +92,10 @@
                     }
                 },
                 {
+                    "id": "tool0",
+                    "iconClass": "fa-font-awesome"
+                },
+                {
                     "id": "tool1",
                     "iconClass": "fa-coffee"
                 },

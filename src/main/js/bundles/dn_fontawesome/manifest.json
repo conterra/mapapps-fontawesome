@@ -3,7 +3,7 @@
     "Bundle-Version": "3.0.2",
     "Bundle-Name": "${bundleName}",
     "Bundle-Description": "${bundleDescription}",
-    "Product-Name": "con terra Developer Network",
+    "Product-Name": "devnet-mapapps-fontawesome",
     "CSS-Themes-Extension": [{
             "name": "*",
             "files": ["./css/font-awesome.min.css"]

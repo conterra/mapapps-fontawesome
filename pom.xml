@@ -251,7 +251,7 @@
                     <!-- add here properties which are used in plugin configuration resolution -->
                     <properties>
                         <!-- deployment of map.apps installation -->
-                        <mapapps.remote.base>http://vsdev1114.esri-de.com/ct-mapapps-webapp-3.5.2</mapapps.remote.base>
+                        <mapapps.remote.base></mapapps.remote.base>
                     </properties>
                 </configuration>
             </plugin>

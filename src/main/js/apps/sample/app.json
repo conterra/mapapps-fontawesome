@@ -1,4 +1,7 @@
 {
+    "properties": {    
+     "amdPackages": "apprt@^3.2.1"
+    },
     "load": {
         "bundleLocations": [
             "bundles",
@@ -6,19 +9,19 @@
         ],
         "allowedBundles": [
             "dn_fontawesome",
-            "custominfo",
-            "system",
-            "map",
-            "themes",
-            "templates",
-            "templatelayout",
-            "windowmanager",
-            "console",
-            "notifier",
-            "contentviewer",
-            "infoviewer",
-            "toolset",
-            "toolrules"
+            "custominfo@^3.2.1",
+            "system@^3.2.1",
+            "map@^3.2.1",
+            "themes@^3.2.1",
+            "templates@^3.2.1",
+            "templatelayout@^3.2.1",
+            "windowmanager@^3.2.1",
+            "console@^3.2.1",
+            "notifier@^3.2.1",
+            "contentviewer@^3.2.1",
+            "infoviewer@^3.2.1",
+            "toolset@^3.2.1",
+            "toolrules@^3.2.1"
         ]
     },
     "bundles": {

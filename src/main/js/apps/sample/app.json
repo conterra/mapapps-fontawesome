@@ -4,8 +4,8 @@
     },
     "load": {
         "bundleLocations": [
-            "bundles",
-            "localbundles"
+            "localbundles",
+            "bundles"
         ],
         "allowedBundles": [
             "dn_fontawesome",
@@ -121,6 +121,10 @@
                 {
                     "id": "tool6",
                     "iconClass": "fa-angellist"
+                },
+                {
+                    "id": "tool7",
+                    "iconClass": "fa-user-circle-o"
                 }
             ]
         }

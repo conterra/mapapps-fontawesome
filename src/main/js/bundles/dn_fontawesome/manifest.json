@@ -6,6 +6,6 @@
     "Product-Name": "devnet-mapapps-fontawesome",
     "CSS-Themes-Extension": [{
             "name": "*",
-            "files": ["./css/font-awesome.min.css"]
+            "files": ["./css/styles.css"]
         }]
 }

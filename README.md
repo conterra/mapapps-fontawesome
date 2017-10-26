@@ -5,3 +5,5 @@ After installing the bundle to your map.apps installation and adding it to your 
 
 ### Sample App ###
 https://www.mapapps.de/mapapps/resources/apps/downloads_fontawesome
+
+![Screensot of sample](https://github.com/conterra/mapapps-fontawesome/blob/master/FontAwesome.JPG)

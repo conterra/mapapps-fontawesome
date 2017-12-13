@@ -18,17 +18,39 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-/* 
+/*
     Created on : 13.03.2017, 09:48:17
     Author     : juku
 */
 
-@import "font-awesome.min.css";
-.fa,
+@import "fontawesome-all.min.css";
 .dijitIcon[class*="fa-"],
 .ctAppRoot .dijitIcon[class*="fa-"]{
     display:inline-block;
-    font:normal normal normal 14px/1 FontAwesome;
     font-size:inherit;
-    text-rendering:auto;
-} 
+}
+
+/*Brands*/
+.fab,
+.dijitIcon.fab,
+.ctAppRoot .dijitIcon.fab{
+    font-family: 'Font Awesome 5 Brands';
+}
+/*Regular*/
+.far
+.dijitIcon.far,
+.ctAppRoot .dijitIcon.far {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 400;
+}
+
+/*SOLID*/
+.fas,
+.dijitIcon.fas,
+.ctAppRoot .dijitIcon.fas,
+.fa,
+.dijitIcon.fa,
+.ctAppRoot .dijitIcon.fa {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}

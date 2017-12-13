@@ -1,6 +1,6 @@
 {
     "Bundle-SymbolicName": "dn_fontawesome",
-    "Bundle-Version": "5.0.0",
+    "Bundle-Version": "5.0.1-SNAPSHOT",
     "Bundle-Name": "${bundleName}",
     "Bundle-Description": "${bundleDescription}",
     "Product-Name": "devnet-mapapps-fontawesome",

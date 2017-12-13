@@ -1,5 +1,5 @@
 {
-    "properties": {    
+    "properties": {
      "amdPackages": "apprt@^3.2.1"
     },
     "load": {
@@ -96,35 +96,35 @@
                 },
                 {
                     "id": "tool0",
-                    "iconClass": "fa-font-awesome"
+                    "iconClass": "fab fa-font-awesome"
                 },
                 {
                     "id": "tool1",
-                    "iconClass": "fa-coffee"
+                    "iconClass": "fas fa-coffee"
                 },
                 {
                     "id": "tool2",
-                    "iconClass": "fa-paper-plane"
+                    "iconClass": "fas fa-paper-plane"
                 },
                 {
                     "id": "tool3",
-                    "iconClass": "fa-truck"
+                    "iconClass": "fas fa-truck"
                 },
                 {
                     "id": "tool4",
-                    "iconClass": "fa-wheelchair"
+                    "iconClass": "fas fa-wheelchair"
                 },
                 {
                     "id": "tool5",
-                    "iconClass": "fa-wifi"
+                    "iconClass": "fas fa-wifi"
                 },
                 {
                     "id": "tool6",
-                    "iconClass": "fa-angellist"
+                    "iconClass": "fab fa-angellist"
                 },
                 {
                     "id": "tool7",
-                    "iconClass": "fa-user-circle-o"
+                    "iconClass": "fas fa-user-circle"
                 }
             ]
         }

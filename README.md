@@ -14,7 +14,7 @@ https://demos.conterra.de/mapapps/resources/apps/downloads_fontawesome
 Font Awesome provides an even larger variation of icons with the 5.0.0 release. Please have a look at [the Font Awesome Documentation](https://fontawesome.com/how-to-use/svg-with-js) for detailed information.
 ### In short ###
 In case you have used a previous version of the bundle dn_fontawesome it is needed to add a prefix to your icon class otherwise the icons will not appear.
-Example: "iconClass": "fa-truck" will become "iconClass": "fas fa-truck". Whre "fas" stand for "fontawesome-solid".
+Example: "iconClass": "fa-truck" will become "iconClass": "fas fa-truck". Where "fas" stand for "fontawesome-solid".
 
 With 5.0.0 the following variations are available:
 

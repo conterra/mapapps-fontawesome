@@ -23,7 +23,7 @@ and open the template in the editor.
     Author     : juku
 */
 
-@import "fontawesome-all.min.css";
+@import "all.min.css";
 .dijitIcon[class*="fa-"],
 .ctAppRoot .dijitIcon[class*="fa-"]{
     display:inline-block;

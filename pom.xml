@@ -30,7 +30,7 @@
             <url>http://52north.org/maven/repo/releases</url>
         </repository>
     </repositories>
-    <pluginRepositories>        
+    <pluginRepositories>
         <pluginRepository>
             <id>52n-dependencies</id>
             <name>52n-dependencies</name>
@@ -178,7 +178,7 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
                     <version>1.10</version>
-                </plugin> 
+                </plugin>
                 <plugin>
                     <artifactId>maven-release-plugin</artifactId>
                     <version>2.5.3</version>
@@ -286,7 +286,7 @@
                     <!-- add here properties which are used in plugin configuration resolution -->
                     <properties>
                         <!-- deployment of map.apps installation -->
-                        <mapapps.remote.base />
+                        <mapapps.remote.base></mapapps.remote.base>
                     </properties>
                 </configuration>
             </plugin>
@@ -400,7 +400,7 @@
                         <goals>
                             <goal>deployAppTemplate</goal>
                         </goals>
-                        <configuration>                            
+                        <configuration>
                             <templateFile>${project.build.directory}/${project.artifactId}-sample-app.zip</templateFile>
                             <templateResources>
                                 <templateResource>
@@ -427,7 +427,7 @@
                     <finalName>${project.artifactId}-bundle</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                 </configuration>
-                <executions> 
+                <executions>
                     <execution>
                         <id>make-zip</id>
                         <phase>package</phase>
@@ -436,7 +436,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>    
+            </plugin>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
@@ -469,7 +469,7 @@
                 </configuration>
             </plugin>
             <plugin>
-                <artifactId>maven-release-plugin</artifactId>                
+                <artifactId>maven-release-plugin</artifactId>
                 <configuration>
                     <tagNameFormat>@{project.version}</tagNameFormat>
                     <preparationGoals>clean</preparationGoals>
@@ -518,7 +518,7 @@
         <!-- don't do this in production configuration! This allows to go any http traffic over the /proxy endpoint -->
         <proxy.allowedServerUrls>http,*;</proxy.allowedServerUrls>
         <proxy.allowedSSLDNs>*</proxy.allowedSSLDNs>
-        
+
         <!-- required for release build -->
         <scm.push>false</scm.push>
         <scm.username>${env.USER_NAME}</scm.username>
@@ -527,16 +527,16 @@
     <profiles>
         <profile>
             <id>run-js-tests</id>
-            <!-- 
+            <!--
                 Execute:
-                
-                mvn package -P run-js-tests -Dmapapps.remote.base=... 
+
+                mvn package -P run-js-tests -Dmapapps.remote.base=...
             -->
             <build>
                 <plugins>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>build-helper-maven-plugin</artifactId>                        
+                        <artifactId>build-helper-maven-plugin</artifactId>
                         <executions>
                             <execution>
                                 <id>reserve-jetty-port</id>
@@ -644,14 +644,14 @@
                 <plugins>
                     <plugin>
                         <groupId>de.jutzig</groupId>
-                        <artifactId>github-release-plugin</artifactId>                        
+                        <artifactId>github-release-plugin</artifactId>
                         <executions>
                             <execution>
                                 <id>github-upload</id>
                                 <phase>deploy</phase>
                                 <goals>
                                     <goal>release</goal>
-                                </goals>                                
+                                </goals>
                                 <configuration>
                                     <tag>${project.version}</tag>
                                     <artifact>${project.build.directory}/${project.artifactId}-${project.version}.jar</artifact>
@@ -671,7 +671,7 @@
                         </executions>
                     </plugin>
                 </plugins>
-            </build>            
+            </build>
         </profile>
         <profile>
             <id>write-release-versions</id>

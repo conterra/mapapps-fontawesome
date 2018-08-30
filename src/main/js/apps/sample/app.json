@@ -125,6 +125,10 @@
                 {
                     "id": "tool7",
                     "iconClass": "fas fa-user-circle"
+                },
+                {
+                    "id": "tool8",
+                    "iconClass": "fas fa-pastafarianism"
                 }
             ]
         }

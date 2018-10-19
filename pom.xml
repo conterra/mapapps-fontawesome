@@ -20,7 +20,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.conterra.devnet</groupId>
     <artifactId>mapapps-fontawesome</artifactId>
-    <version>5.4.1-SNAPSHOT</version>
+    <version>5.4.1</version>
     <packaging>jar</packaging>
     <!-- DISABLE repositories and pluginRepositories if inside the con terra! -->
     <repositories>
@@ -286,7 +286,7 @@
                     <!-- add here properties which are used in plugin configuration resolution -->
                     <properties>
                         <!-- deployment of map.apps installation -->
-                        <mapapps.remote.base></mapapps.remote.base>
+                        <mapapps.remote.base />
                     </properties>
                 </configuration>
             </plugin>
@@ -488,7 +488,7 @@
         <developerConnection>scm:git:https://github.com/conterra/mapapps-fontawesome.git
 		</developerConnection>
         <url>https://github.com/conterra/mapapps-fontawesome</url>
-        <tag>HEAD</tag>
+        <tag>5.4.1</tag>
     </scm>
     <distributionManagement>
         <repository>

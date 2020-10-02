@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2015 con terra GmbH (info@conterra.de)
+ * Copyright (C) 2020 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,44 +13,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/*
+  /*
     Created on : 13.03.2017, 09:48:17
     Author     : juku
 */
 
-@import "all.min.css";
-.dijitIcon[class*="fa-"],
-.ctAppRoot .dijitIcon[class*="fa-"]{
-    display:inline-block;
-    font-size:inherit;
-}
+  @import "all.min.css";
 
-/*Brands*/
-.fab,
-.dijitIcon.fab,
-.ctAppRoot .dijitIcon.fab{
-    font-family: 'Font Awesome 5 Brands';
-}
-/*Regular*/
-.far
-.dijitIcon.far,
-.ctAppRoot .dijitIcon.far {
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 400;
-}
+  .dijitIcon[class*="fa-"],
+  .ctAppRoot .dijitIcon[class*="fa-"] {
+      display: inline-block;
+      font-size: inherit;
+  }
 
-/*SOLID*/
-.fas,
-.dijitIcon.fas,
-.ctAppRoot .dijitIcon.fas,
-.fa,
-.dijitIcon.fa,
-.ctAppRoot .dijitIcon.fa {
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-}
+  /*Brands*/
+  .fab,
+  .dijitIcon.fab,
+  .ctAppRoot .dijitIcon.fab {
+      font-family: 'Font Awesome 5 Brands';
+  }
+
+  /*Regular*/
+  .far .dijitIcon.far,
+  .ctAppRoot .dijitIcon.far {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 400;
+  }
+
+  /*SOLID*/
+  .fas,
+  .dijitIcon.fas,
+  .ctAppRoot .dijitIcon.fas,
+  .fa,
+  .dijitIcon.fa,
+  .ctAppRoot .dijitIcon.fa {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+  }

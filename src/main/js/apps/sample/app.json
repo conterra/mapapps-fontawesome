@@ -1,78 +1,105 @@
 {
     "properties": {
-     "amdPackages": "apprt@^3.2.1"
+        "title": "${apptitle}"
     },
     "load": {
         "bundleLocations": [
             "localbundles",
             "bundles"
         ],
+        "preFetchBundles": false,
         "allowedBundles": [
-            "dn_fontawesome",
-            "custominfo@^3.2.1",
-            "system@^3.2.1",
-            "map@^3.2.1",
-            "themes@^3.2.1",
-            "templates@^3.2.1",
-            "templatelayout@^3.2.1",
-            "windowmanager@^3.2.1",
-            "console@^3.2.1",
-            "notifier@^3.2.1",
-            "contentviewer@^3.2.1",
-            "infoviewer@^3.2.1",
-            "toolset@^3.2.1",
-            "toolrules@^3.2.1"
+            "system",
+            "console",
+            "notifier",
+            "splashscreen",
+            "templatelayout",
+            "template-seasons",
+            "theme-everlasting",
+            "map-init",
+            "map-preload-2D",
+            "toolset",
+            "toolrules",
+            "banner",
+            "mapnavigation",
+            "share-link",
+            "custominfo",
+            "dn_fontawesome"
+        ],
+        "require": [
+            "${app}.app"
+        ],
+        "i18n": [
+            "bundle"
         ]
     },
     "bundles": {
-        "map": {
-            "MappingResourceRegistryFactory": {
-                "_knownServices": {
-                    "services": [
-                        {
-                            "id": "worldTopo",
+        "banner": {
+            "BannerWidget": {
+                "label": "Developer Network",
+                "image": "resource('${app}:/images/logo_conterra.png')",
+                "imageWidth": 200,
+                "imagePosition": "above",
+                "link": "http://developernetwork.conterra.de"
+            }
+        },
+        "map-init": {
+            "Config": {
+                "basemaps": [
+                    {
+                        "id": "esri_hybrid",
+                        "basemap": "hybrid"
+                    },
+                    {
+                        "id": "esri_satellite",
+                        "basemap": "satellite",
+                        "title": "Satellit"
+                    },
+                    {
+                        "id": "topo",
+                        "selected": true,
+                        "basemap": "topo"
+                    },
+                    {
+                        "id": "custom_gray",
+                        "title": "Gray",
+                        "description": "This basemap uses a custom layer",
+                        "basemap":{
                             "type": "AGS_TILED",
-                            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
-                        }]
-                }
-            },
-            "MapModelFactory": {
-                "_configData": {
-                    "maps": [{
-                            "id": "default",
-                            "glass_pane": [],
-                            "operationalLayer": [],
-                            "baseLayer": [
-                                {
-                                    "id": "background1",
-                                    "title": "${map.base.topo.title}",
-                                    "service": "worldTopo",
-                                    "layers": ["*"],
-                                    "enabled": true
-                                }]
-                        }]
-                }
-            },
-            "MapState": {
-                "initialExtent": {
-                    "xmin": 619578.155777645,
-                    "ymin": 5965284.64146539,
-                    "xmax": 1733575.1859872,
-                    "ymax": 7373509.3231059,
-                    "spatialReference": {
-                        "wkid": 3857
+                            "url": "https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer"
+                        }
+                    }
+                ],
+                "map": {
+                },
+                "view": {
+                    "viewmode": "2D",
+                    "extent": {
+                        "xmin": -9276006.978871629,
+                        "xmax": -9257662.092083212,
+                        "ymin": 5245403.351733481,
+                        "ymax": 5255072.635811542,
+                        "spatialReference": 3857
                     }
                 }
             }
         },
-        "toolset": {
-            "ToolsetManager": {
-                "toolsets": [{
-                        "id": "default_tools",
-                        "title": "Some Fontawesome Icons",
-                        "tools": ["tool*"],
-                        "container": "map"
-                    }]
+        "templates": {
+            "TemplateModel": {
+                "_templates": [
+                    {
+                        "name": "seasons",
+                        "widgets": [
+                            {
+                                "widgetRole": "banner",
+                                "sublayout": [
+                                    "mobile_portrait"
+                                ],
+                                "attachTo": "footer_right"
+                            }
+                        ]
+                    }
+                ]
             }
         },
         "custominfo": {
@@ -119,10 +146,6 @@
                     "iconClass": "fas fa-wifi"
                 },
                 {
-                    "id": "tool6",
-                    "iconClass": "fab fa-angellist"
-                },
-                {
                     "id": "tool7",
                     "iconClass": "fas fa-user-circle"
                 },
@@ -131,6 +154,42 @@
                     "iconClass": "fas fa-umbrella-beach"
                 }
             ]
+        },
+        "toolset": {
+            "ToolsetManager": {
+                "toolsets": [
+                    {
+                        "id": "default_tools",
+                        "title": "Some Fontawesome Icons",
+                        "tools": [
+                            "tool*"
+                        ],
+                        "container": "map"
+                    }, {
+                        "id": "mapview_tools",
+                        "tools": [
+                            "locateMeTool",
+                            "zoomInTool",
+                            "zoomOutTool",
+                            "compassTool",
+                            "restoreInitialViewTool"
+                        ],
+                        "registerWidget": {
+                            "widgetRole": "mapview_tools"
+                        },
+                        "container": "ignore",
+                        "windowType": "container",
+                        "cssClass": "muted"
+                    }
+                ]
+            }
+        },
+        "toolrules": {
+            "ToolActiveStateManager": {
+                "activateOnStartToolIds": [
+                    "printingEnhancedToggleTool"
+                ]
+            }
         }
     }
 }

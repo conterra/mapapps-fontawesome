@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 module.exports = {
-    bundleName: "Font-Awesome Icon Set",
-    bundleDescription: "This bundles makes the font-awesome web-font icon set usable inside map.apps. See http://fortawesome.github.io/Font-Awesome/icons for more info."
+    root: {
+        apptitle: "Font-Awesome Icon Set Sample"
+    },
+    "de": true
 };

@@ -13,7 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-module.exports = {
-    bundleName: "Font-Awesome Icon Set",
-    bundleDescription: "This bundles makes the font-awesome web-font icon set usable inside map.apps. See http://fortawesome.github.io/Font-Awesome/icons for more info."
-};
+import i18n from "dojo/i18n!./nls/bundle"

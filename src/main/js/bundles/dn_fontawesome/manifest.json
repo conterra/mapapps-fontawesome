@@ -1,11 +1,11 @@
 {
-    "Bundle-SymbolicName": "dn_fontawesome",
-    "Bundle-Version": "5.4.2-SNAPSHOT",
-    "Bundle-Name": "${bundleName}",
-    "Bundle-Description": "${bundleDescription}",
-    "Product-Name": "devnet-mapapps-fontawesome",
+    "name": "dn_fontawesome",
+    "version": "5.4.2-SNAPSHOT",
+    "title": "${bundleName}",
+    "description": "${bundleDescription}",
+    "productName": "devnet-mapapps-fontawesome",
     "CSS-Themes-Extension": [{
-            "name": "*",
-            "files": ["./css/styles.css"]
-        }]
+        "name": "*",
+        "files": ["./css/styles.css"]
+    }]
 }

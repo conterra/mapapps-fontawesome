@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2015 con terra GmbH (info@conterra.de)
+    Copyright (C) 2020 con terra GmbH (info@conterra.de)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@
     <artifactId>mapapps-fontawesome</artifactId>
     <version>5.4.2-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <!-- DISABLE repositories and pluginRepositories if inside the con terra! -->
     <repositories>
         <repository>
             <id>52n-dependencies</id>
@@ -50,35 +49,45 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
-        <!-- used for test env in jetty -->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- proxy required if wms or other services should be loaded -->
-        <dependency>
-            <groupId>de.conterra.mapapps</groupId>
-            <artifactId>ct-mapapps-proxy</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- the embedded registry provides a fast way to host the js packages-->
         <dependency>
             <groupId>de.conterra.jsregistry</groupId>
             <artifactId>ct-jsregistry-embedded</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- use intern-geezer as test lib -->
+        <dependency>
+            <groupId>de.conterra.ct-proxy</groupId>
+            <artifactId>ct-proxy-servlet</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- include for vue-devtools support -->
+        <dependency>
+            <groupId>org.vuejs</groupId>
+            <artifactId>vue</artifactId>
+            <classifier>dev</classifier>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.vuetifyjs</groupId>
+            <artifactId>vuetify</artifactId>
+            <classifier>dev</classifier>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- test support libs -->
         <dependency>
             <groupId>de.conterra.jsrt</groupId>
             <artifactId>ct-jsrt-test-intern</artifactId>
+            <version>${ct.jsrt-test.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>de.conterra.jsrt</groupId>
+            <artifactId>ct-jsrt-test-uitest</artifactId>
+            <version>${ct.jsrt-test.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
     <build>
         <pluginManagement>
@@ -96,7 +105,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>2.7</version>
+                    <version>3.1.0</version>
                     <configuration>
                         <escapeString>\</escapeString>
                     </configuration>
@@ -104,34 +113,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>3.2.1</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.3</version>
-                    <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
-                        <showDeprecation>true</showDeprecation>
-                        <excludes>
-                        <exclude>**/*</exclude>
-                    </excludes>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.10.2</version>
-                    <configuration>
-                        <skip>true</skip>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <!-- we jar the ct/* js sources so that we have it present for dependency unpack goal in projects -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.6</version>
+                    <version>3.2.0</version>
                     <configuration>
                         <classesDirectory>${js.build.outputPath}</classesDirectory>
                         <includes>
@@ -145,17 +132,27 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>2.6</version>
+                    <version>3.2.3</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>1.6.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.eclipse.jetty</groupId>
                     <artifactId>jetty-maven-plugin</artifactId>
-                    <version>9.2.10.v20150310</version>
+                    <version>9.4.17.v20190418</version>
+                    <configuration>
+                        <supportedPackagings>
+                            <supportedPackaging>jar</supportedPackaging>
+                        </supportedPackagings>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>properties-maven-plugin</artifactId>
-                    <version>1.0-alpha-2</version>
+                    <version>1.0.0</version>
                 </plugin>
                 <plugin>
                     <groupId>com.google.code.maven-replacer-plugin</groupId>
@@ -163,21 +160,18 @@
                     <version>1.5.3</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.lesscss</groupId>
-                    <artifactId>lesscss-maven-plugin</artifactId>
-                    <version>1.7.0.1.1</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.lesscss</groupId>
-                            <artifactId>lesscss</artifactId>
-                            <version>2.7.1-v8</version>
-                        </dependency>
-                    </dependencies>
+                    <groupId>com.github.eirslett</groupId>
+                    <artifactId>frontend-maven-plugin</artifactId>
+                    <version>1.10.0</version>
+                    <configuration>
+                        <nodeVersion>v12.16.1</nodeVersion>
+                        <npmVersion>6.13.4</npmVersion>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>1.10</version>
+                    <version>3.1.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-release-plugin</artifactId>
@@ -213,7 +207,6 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-        <!-- set as source dir, so that you can edit it correctly in netbeans -->
         <sourceDirectory>src/main/js</sourceDirectory>
         <resources>
             <resource>
@@ -235,46 +228,19 @@
                 <excludes>
                     <exclude>application.properties</exclude>
                 </excludes>
-                <filtering>false</filtering>
             </testResource>
             <testResource>
                 <directory>src/test/webapp</directory>
                 <includes>
                     <include>**/*</include>
                 </includes>
-                <filtering>false</filtering>
             </testResource>
         </testResources>
         <plugins>
             <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <configuration>
-                    <header>${project.baseUri}apache2-license-header.txt</header>
-                    <properties>
-                        <owner>con terra GmbH</owner>
-                        <email>info@conterra.de</email>
-                        <project.inceptionYear>2015</project.inceptionYear>
-                    </properties>
-                    <excludes>
-                        <exclude>**/README*</exclude>
-                        <exclude>**/*.html</exclude>
-                        <exclude>**/*.json</exclude>
-                        <exclude>src/test/**</exclude>
-                    </excludes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>format</goal>
-                        </goals>
-                        <phase>process-sources</phase>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>de.conterra.maven</groupId>
                 <artifactId>setproperties-maven-plugin</artifactId>
+                <version>1.0.2</version>
                 <executions>
                     <execution>
                         <goals>
@@ -286,14 +252,29 @@
                     <!-- add here properties which are used in plugin configuration resolution -->
                     <properties>
                         <!-- deployment of map.apps installation -->
-                        <mapapps.remote.base />
+                        <mapapps.remote.base>.</mapapps.remote.base>
                     </properties>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <!-- this unpacks the org css/less files for own bundles -->
                 <executions>
                     <execution>
                         <id>unpack-themes-src</id>
@@ -305,13 +286,22 @@
                             <stripVersion>true</stripVersion>
                             <artifactItems>
                                 <artifactItem>
-                                    <!-- unpack mapapps sources -->
                                     <groupId>de.conterra.mapapps</groupId>
                                     <artifactId>ct-mapapps-js-api</artifactId>
                                     <version>${mapapps.version}</version>
                                     <classifier>src</classifier>
                                     <outputDirectory>${project.build.directory}/unpacked</outputDirectory>
-                                    <includes>bundles/base/themes/themes/winter/**,bundles/base/themes/themes/common/**,bundles/base/templates/templates/common/**</includes>
+                                    <includes>layout/theme-everlasting/**,layout/theme-common/**</includes>
+                                    <excludes>layout/theme-everlasting/styles/vuetify/**</excludes>
+                                </artifactItem>
+                                <artifactItem>
+                                    <!-- unpack stylus files provided by beautify to map.apps themes -->
+                                    <groupId>org.vuetifyjs</groupId>
+                                    <artifactId>vuetify</artifactId>
+                                    <version>${vuetify.version}</version>
+                                    <classifier>dev</classifier>
+                                    <outputDirectory>${project.build.directory}/unpacked/layout</outputDirectory>
+                                    <includes>vuetify/stylus/**</includes>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
@@ -319,11 +309,9 @@
                 </executions>
             </plugin>
             <plugin>
-                <!-- JavaScript files must be encoded with UTF-8! -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <configuration>
-                    <!-- JavaScript files must be encoded with UTF-8! -->
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -345,23 +333,94 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.lesscss</groupId>
-                <artifactId>lesscss-maven-plugin</artifactId>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <configuration>
+                    <httpConnector>
+                        <port>${jetty.port}</port>
+                    </httpConnector>
+                    <stopPort>9966</stopPort>
+                    <stopKey>jetty-stop</stopKey>
+                    <stopWait>60000</stopWait>
+                    <scanIntervalSeconds>0</scanIntervalSeconds>
+                    <reload>manual</reload>
+                    <webXml>${basedir}/src/test/webapp/WEB-INF/web.xml</webXml>
+                    <useTestScope>true</useTestScope>
+                    <webAppConfig>
+                        <contextPath>/</contextPath>
+                        <baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
+                            <resourcesAsCSV>${root.build.outputPath},${basedir}/src/test/webapp</resourcesAsCSV>
+                        </baseResource>
+                        <!-- include ct-jsregistry-embedded-<version>.jar as web-fragment provider -->
+                        <webInfIncludeJarPattern>.*/ct-jsregistry-embedded-[^/]*\.jar$</webInfIncludeJarPattern>
+                    </webAppConfig>
+                    <systemProperties>
+                        <systemProperty>
+                            <!-- set catalina base, so that log files are created in the target directory-->
+                            <name>catalina.base</name>
+                            <value>${project.build.directory}</value>
+                        </systemProperty>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <phase>process-resources</phase>
+                        <id>run gulp ${gulp.task}</id>
                         <goals>
-                            <goal>compile</goal>
+                            <goal>gulp</goal>
                         </goals>
+                        <configuration>
+                            <arguments>${gulp.task}</arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <!-- trigger manual: com.github.eirslett:frontend-maven-plugin:gulp@watch-changes -->
+                        <id>watch-changes</id>
+                        <goals>
+                            <goal>gulp</goal>
+                        </goals>
+                        <phase>none</phase>
+                        <configuration>
+                            <arguments>watch</arguments>
+                        </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
                 <configuration>
-                    <sourceDirectory>${js.build.outputPath}</sourceDirectory>
-                    <outputDirectory>${js.build.outputPath}</outputDirectory>
+                    <header>${project.baseUri}apache2-license-header.txt</header>
+                    <properties>
+                        <owner>con terra GmbH</owner>
+                        <email>info@conterra.de</email>
+                        <project.inceptionYear>2020</project.inceptionYear>
+                    </properties>
                     <includes>
-                        <include>bundles/**/*.less</include>
+                        <include>src/main/js/**/*.js</include>
+                        <include>src/main/js/**/*.ts</include>
+                        <include>src/main/js/**/*.vue</include>
+                        <include>src/main/js/**/*.css</include>
+                        <include>src/main/config/assembly.xml</include>
+                        <include>**/build.properties</include>
+                        <include>**/gulpfile.js</include>
+                        <include>**/pom.xml</include>
                     </includes>
+                    <mapping>
+                        <vue>XML_STYLE</vue>
+                    </mapping>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                        <phase>process-sources</phase>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>com.google.code.maven-replacer-plugin</groupId>
@@ -382,7 +441,8 @@
                             <replacements>
                                 <replacement>
                                     <!-- remove bundleLocations from app.json -->
-                                    <token>\s*"bundleLocations"\s*:\s*\[\s*"localbundles"\s*,\s*"bundles"\s*\]\s*,\s*</token>
+                                    <token>\s*"bundleLocations"\s*:\s*\[\s*"localbundles"\s*,\s*"bundles"\s*\]\s*,\s*
+                                    </token>
                                     <value />
                                 </replacement>
                             </replacements>
@@ -438,37 +498,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <configuration>
-                    <httpConnector>
-                        <port>9090</port>
-                    </httpConnector>
-                    <stopPort>9966</stopPort>
-                    <stopKey>jetty-stop</stopKey>
-                    <stopWait>60000</stopWait>
-                    <scanIntervalSeconds>0</scanIntervalSeconds>
-                    <reload>manual</reload>
-                    <webXml>${basedir}/src/test/webapp/WEB-INF/web.xml</webXml>
-                    <useTestScope>true</useTestScope>
-                    <webAppConfig>
-                        <contextPath>/</contextPath>
-                        <baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
-                            <resourcesAsCSV>${basedir}/src/main,${basedir}/src/test/webapp,${project.build.directory}/${project.artifactId}</resourcesAsCSV>
-                        </baseResource>
-                        <!-- include ct-jsregistry-embedded-<version>.jar as web-fragment provider -->
-                        <webInfIncludeJarPattern>.*/ct-jsregistry-embedded-[^/]*\.jar$</webInfIncludeJarPattern>
-                    </webAppConfig>
-                    <systemProperties>
-                        <systemProperty>
-                            <!-- set catalina base, so that log files are created in the target directory-->
-                            <name>catalina.base</name>
-                            <value>${project.build.directory}</value>
-                        </systemProperty>
-                    </systemProperties>
-                </configuration>
-            </plugin>
-            <plugin>
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
                     <tagNameFormat>@{project.version}</tagNameFormat>
@@ -486,7 +515,7 @@
     <scm>
         <connection>scm:git:https://github.com/conterra/mapapps-fontawesome.git</connection>
         <developerConnection>scm:git:https://github.com/conterra/mapapps-fontawesome.git
-		</developerConnection>
+        </developerConnection>
         <url>https://github.com/conterra/mapapps-fontawesome</url>
         <tag>HEAD</tag>
     </scm>
@@ -505,19 +534,28 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- dojo custom build parameters -->
-        <js.build.outputPath>${project.build.directory}/${project.artifactId}/js</js.build.outputPath>
-        <!-- mapapps.version -->
-        <mapapps.version>3.9.3</mapapps.version>
-       <!-- java lib versions -->
-        <ct.jsregistry.version>1.0.26</ct.jsregistry.version>
-        <ct.jsrt-test.version>1.0.8</ct.jsrt-test.version>
+        <root.build.outputPath>${project.build.directory}/webapp</root.build.outputPath>
+        <js.build.outputPath>${root.build.outputPath}/js</js.build.outputPath>
+
+        <mapapps.version>4.9.1</mapapps.version>
+        <!-- JS lib versions -->
+        <apprt.version>${mapapps.version}</apprt.version>
+        <!-- java lib versions -->
+        <ct.jsregistry.version>1.3.8</ct.jsregistry.version>
+        <ct.jsrt-test.version>1.1.5</ct.jsrt-test.version>
 
         <!-- the default app, replaced in the *.html files to switch app names-->
         <default.app.name>sample</default.app.name>
-        <client.config.initjs>$\{mapapps.remote.base\}/resources/jsregistry/root/ct/${mapapps.version}/dojo-init.js</client.config.initjs>
+
         <!-- don't do this in production configuration! This allows to go any http traffic over the /proxy endpoint -->
-        <proxy.allowedServerUrls>http,*;</proxy.allowedServerUrls>
+        <proxy.allowedServerUrls>
+            *://*:*/**;
+        </proxy.allowedServerUrls>
         <proxy.allowedSSLDNs>*</proxy.allowedSSLDNs>
+        <proxy.use.rules />
+        <jetty.port>9090</jetty.port>
+        <mvn.cmd>mvn</mvn.cmd>
+        <gulp.task />
 
         <!-- required for release build -->
         <scm.push>false</scm.push>
@@ -527,11 +565,6 @@
     <profiles>
         <profile>
             <id>run-js-tests</id>
-            <!--
-                Execute:
-
-                mvn package -P run-js-tests -Dmapapps.remote.base=...
-            -->
             <build>
                 <plugins>
                     <plugin>
@@ -580,23 +613,98 @@
                         </executions>
                     </plugin>
                     <plugin>
-                        <groupId>de.conterra.jsrt</groupId>
-                        <artifactId>ct-jsrt-test-maven-plugin</artifactId>
+                        <groupId>com.github.eirslett</groupId>
+                        <artifactId>frontend-maven-plugin</artifactId>
                         <executions>
                             <execution>
+                                <id>run gulp js tests</id>
                                 <phase>test</phase>
                                 <goals>
-                                    <goal>runTests</goal>
+                                    <goal>gulp</goal>
                                 </goals>
+                                <configuration>
+                                    <arguments>run-browser-tests --tests
+                                        http://localhost:${jetty.server.port}/js/tests/runTests.html
+                                    </arguments>
+                                </configuration>
                             </execution>
                         </executions>
-                        <configuration>
-                            <initialDelay>2000</initialDelay>
-                            <timeout>60000</timeout>
-                            <tests>
-                                <test>http://localhost:${jetty.server.port}/resources/jsregistry/root/intern/latest/runner.html?boot=/js/tests/test-init.js&amp;test=sample_helloworld/tests/all</test>
-                            </tests>
-                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>include-mapapps-deps</id>
+            <dependencies>
+                <dependency>
+                    <groupId>de.conterra.mapapps</groupId>
+                    <artifactId>ct-mapapps-js-api</artifactId>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.dojotoolkit</groupId>
+                    <artifactId>dojo-release</artifactId>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.dojotoolkit</groupId>
+                    <artifactId>dgrid</artifactId>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.dojotoolkit</groupId>
+                    <artifactId>dstore</artifactId>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.esri.js</groupId>
+                    <artifactId>ags-js-api4</artifactId>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>moment-js</groupId>
+                    <artifactId>moment-js</artifactId>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>de.conterra.js</groupId>
+                    <artifactId>apprt-polyfill</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>node-install</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>!dev</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.eirslett</groupId>
+                        <artifactId>frontend-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>install node and npm</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>install-node-and-npm</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>npm install</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>npm</goal>
+                                </goals>
+                                <configuration>
+                                    <arguments>install</arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>
@@ -615,6 +723,9 @@
             </activation>
             <properties>
                 <local.configfile>${basedir}/build.properties</local.configfile>
+                <!-- change if you have a dev task in your gulpfile.js defined
+                <gulp.task>dev</gulp.task>
+                -->
             </properties>
             <build>
                 <plugins>
@@ -628,9 +739,44 @@
                                     <goal>read-project-properties</goal>
                                 </goals>
                                 <configuration>
+                                    <quiet>true</quiet>
                                     <files>
                                         <file>${local.configfile}</file>
                                     </files>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>watch-all</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>dev</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>trigger-watch-changes</id>
+                                <phase>test-compile</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <async>true</async>
+                                    <executable>${maven.home}/bin/${mvn.cmd}</executable>
+                                    <arguments>
+                                        <argument>com.github.eirslett:frontend-maven-plugin:gulp@watch-changes
+                                        </argument>
+                                    </arguments>
                                 </configuration>
                             </execution>
                         </executions>
@@ -654,7 +800,8 @@
                                 </goals>
                                 <configuration>
                                     <tag>${project.version}</tag>
-                                    <artifact>${project.build.directory}/${project.artifactId}-${project.version}.jar</artifact>
+                                    <artifact>${project.build.directory}/${project.artifactId}-${project.version}.jar
+                                    </artifact>
                                     <fileSets>
                                         <fileSet>
                                             <directory>${project.build.directory}</directory>
@@ -733,7 +880,9 @@
                                     <goal>checkin</goal>
                                 </goals>
                                 <configuration>
-                                    <message>[update-bundle-package-versions] from ${replace.source.version} to ${replace.target.version}</message>
+                                    <message>[update-bundle-package-versions] from ${replace.source.version} to
+                                        ${replace.target.version}
+                                    </message>
                                     <basedir>${basedir}/src/main/js</basedir>
                                     <pushChanges>${scm.push}</pushChanges>
                                     <username>${scm.username}</username>
@@ -746,8 +895,6 @@
             </build>
         </profile>
         <profile>
-            <!-- this is the optimization profile, it executes the dojo build to compress, minimize and inline templates in dojo, esri and ct javascript sources -->
-            <!-- it must be explicitly activated by -P compress flag, also at release time -->
             <id>compress</id>
             <build>
                 <plugins>
@@ -779,7 +926,7 @@
                                 </configuration>
                             </execution>
                             <execution>
-                                <id>optimize css</id>
+                                <id>optimize CSS</id>
                                 <goals>
                                     <goal>optimizeCSS</goal>
                                 </goals>
@@ -787,7 +934,7 @@
                                 <configuration>
                                     <cssFiles>
                                         <includes>
-                                            <include>bundles/**/*.css</include>
+                                            <include>bundles/*/*/*.css</include>
                                         </includes>
                                         <excludes>
                                             <exclude>**/themeSettings.css</exclude>
@@ -840,81 +987,26 @@
             </build>
         </profile>
         <profile>
-            <id>less-v8-x32</id>
-            <activation>
-                <property>
-                    <name>sun.arch.data.model</name>
-                    <value>32</value>
-                </property>
-            </activation>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <groupId>org.lesscss</groupId>
-                            <artifactId>lesscss-maven-plugin</artifactId>
-                            <dependencies>
-                                <dependency>
-                                    <groupId>lu.flier.script</groupId>
-                                    <artifactId>jav8-win32</artifactId>
-                                    <version>0.4</version>
-                                </dependency>
-                            </dependencies>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
-        </profile>
-        <profile>
-            <id>less-v8-x64</id>
-            <activation>
-                <property>
-                    <name>sun.arch.data.model</name>
-                    <value>64</value>
-                </property>
-            </activation>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <groupId>org.lesscss</groupId>
-                            <artifactId>lesscss-maven-plugin</artifactId>
-                            <dependencies>
-                                <dependency>
-                                    <groupId>lu.flier.script</groupId>
-                                    <artifactId>jav8-win64</artifactId>
-                                    <version>0.6</version>
-                                </dependency>
-                            </dependencies>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
-        </profile>
-        <profile>
-            <id>less-v8-x64-mac</id>
+            <id>windows</id>
             <activation>
                 <os>
-                    <family>mac</family>
+                    <family>Windows</family>
                 </os>
             </activation>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <groupId>org.lesscss</groupId>
-                            <artifactId>lesscss-maven-plugin</artifactId>
-                            <dependencies>
-                                <dependency>
-                                    <groupId>lu.flier.script</groupId>
-                                    <artifactId>jav8-macosx86_64</artifactId>
-                                    <version>0.6</version>
-                                </dependency>
-                            </dependencies>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
+            <properties>
+                <mvn.cmd>mvn.cmd</mvn.cmd>
+            </properties>
+        </profile>
+        <profile>
+            <id>unix</id>
+            <activation>
+                <os>
+                    <family>unix</family>
+                </os>
+            </activation>
+            <properties>
+                <mvn.cmd>mvn</mvn.cmd>
+            </properties>
         </profile>
     </profiles>
 </project>

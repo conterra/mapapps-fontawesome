@@ -5,18 +5,18 @@
          version="3.0">
 
     <display-name>map.apps remote sample</display-name>
-    
+
     <!-- NOTE: a META-INF/web-fragment.xml from ct-jsregistry-embedded is also loaded together with this specification ! -->
 
     <servlet>
         <description>ProxyServlet</description>
         <servlet-name>ProxyServlet</servlet-name>
-        <servlet-class>de.conterra.mapapps.proxy.ProxyServlet</servlet-class>
+        <servlet-class>de.conterra.proxy.servlet.ProxyServlet</servlet-class>
         <load-on-startup>0</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>ProxyServlet</servlet-name>
         <url-pattern>/proxy</url-pattern>
     </servlet-mapping>
-    
+
 </web-app>

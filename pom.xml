@@ -20,7 +20,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.conterra.devnet</groupId>
     <artifactId>mapapps-fontawesome</artifactId>
-    <version>5.15.0</version>
+    <version>5.15.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <repositories>
         <repository>
@@ -517,7 +517,7 @@
         <developerConnection>scm:git:https://github.com/conterra/mapapps-fontawesome.git
         </developerConnection>
         <url>https://github.com/conterra/mapapps-fontawesome</url>
-        <tag>5.15.0</tag>
+        <tag>HEAD</tag>
     </scm>
     <distributionManagement>
         <repository>

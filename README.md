@@ -6,7 +6,7 @@ After installing the bundle to your map.apps installation and adding it to your 
 ### Sample App ###
 https://demos.conterra.de/mapapps/resources/apps/downloads_fontawesome
 
-![Screensot of sample](https://github.com/conterra/mapapps-fontawesome/blob/master/FontAwesome.JPG)
+![Screensot of sample](https://github.com/conterra/mapapps-fontawesome/blob/master/screenshot.JPG)
 
 
 ## :warning: Updating from Font Awesome smaller than 5.0.0  :warning: ##

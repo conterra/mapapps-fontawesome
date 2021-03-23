@@ -1,6 +1,6 @@
 {
     "name": "dn_fontawesome",
-    "version": "5.15.1-SNAPSHOT",
+    "version": "5.15.3-SNAPSHOT",
     "title": "${bundleName}",
     "description": "${bundleDescription}",
     "productName": "devnet-mapapps-fontawesome",

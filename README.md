@@ -3,12 +3,6 @@ This bundle allows you to use font awesome icons as themes extension in map.apps
 
 After installing the bundle to your map.apps installation and adding it to your app you can use the new icons by adding e.g. “iconClass”:”fa-binoculars” to a tool definition inside the app.json. Or, if you have your own custom theme, you can replace all of the map.apps default icons.
 
-### Sample App ###
-https://demos.conterra.de/mapapps/resources/apps/downloads_fontawesome
-
-![Screensot of sample](https://github.com/conterra/mapapps-fontawesome/blob/master/FontAwesome.JPG)
-
-
 ## :warning: Updating from Font Awesome smaller than 5.0.0  :warning: ##
 
 Font Awesome provides an even larger variation of icons with the 5.0.0 release. Please have a look at [the Font Awesome Documentation](https://fontawesome.com/how-to-use/svg-with-js) for detailed information.

@@ -103,7 +103,7 @@
                     "title": "App Info",
                     "toolClass": "ctInfo",
                     "widgetSettings": {
-                        "content": "This sample shows how font awesome icons can be integrated to map.apps as themes extension. <a target='_blank' href='https://fontawesome.com/icons'>All available (26.107 icons) can be seen here</a>. Please note, that the tools are only placeholders in this app that all perform the same selection.",
+                        "content": "This sample shows how font awesome icons can be integrated to map.apps as themes extension. <a target='_blank' href='https://fontawesome.com/icons'>All available (1553 icons) can be seen here</a>. Please note, that the tools are only placeholders in this app that all perform the same selection.",
                         "window": {
                             "marginBox": {
                                 "l": 50,

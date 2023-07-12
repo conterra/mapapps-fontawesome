@@ -128,7 +128,7 @@
                 },
                 {
                     "id": "tool2",
-                    "iconClass": "fa-solid fa-paper-plane"
+                    "iconClass": "fa-regular fa-paper-plane"
                 },
                 {
                     "id": "tool3",

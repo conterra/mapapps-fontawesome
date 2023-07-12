@@ -1,6 +1,6 @@
 {
     "properties": {
-        "title": "${apptitle}"
+        "title": "Fontawesome Icons"
     },
     "load": {
         "bundleLocations": [
@@ -25,12 +25,6 @@
             "share-link",
             "custominfo",
             "dn_fontawesome"
-        ],
-        "require": [
-            "${app}.app"
-        ],
-        "i18n": [
-            "bundle"
         ]
     },
     "bundles": {
@@ -109,10 +103,13 @@
                     "title": "App Info",
                     "toolClass": "ctInfo",
                     "widgetSettings": {
-                        "content": "This sample shows how font awesome icons can be integrated to map.apps as themes extension. <a target='_blank' href='http://fortawesome.github.io/Font-Awesome/icons/'>All available (605 icons) can be seen here</a>. Please note, that the tools are only placeholders in this app that all perform the same selection.",
+                        "content": "This sample shows how font awesome icons can be integrated to map.apps as themes extension. <a target='_blank' href='https://fontawesome.com/icons'>All available (26.107 icons) can be seen here</a>. Please note, that the tools are only placeholders in this app that all perform the same selection.",
                         "window": {
                             "marginBox": {
-                                "l": 50
+                                "l": 50,
+                                "t": 50,
+                                "w": 306,
+                                "h": 200
                             }
                         }
                     },

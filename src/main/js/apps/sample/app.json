@@ -107,7 +107,7 @@
                         "window": {
                             "marginBox": {
                                 "l": 50,
-                                "t": 50,
+                                "t": 200,
                                 "w": 306,
                                 "h": 200
                             }
@@ -120,15 +120,15 @@
                 },
                 {
                     "id": "tool0",
-                    "iconClass": "fab fa-font-awesome"
+                    "iconClass": "fa-brands fa-font-awesome"
                 },
                 {
                     "id": "tool1",
-                    "iconClass": "fas fa-coffee"
+                    "iconClass": "fa-solid fa-coffee"
                 },
                 {
                     "id": "tool2",
-                    "iconClass": "fas fa-paper-plane"
+                    "iconClass": "fa-solid fa-paper-plane"
                 },
                 {
                     "id": "tool3",
@@ -161,7 +161,14 @@
                         "tools": [
                             "tool*"
                         ],
-                        "container": "map"
+                        "container": "map",
+                        "window": {
+                            "closable": true
+                        },
+                        "position": {
+                            "rel_l": 50,
+                            "rel_t": 50
+                        }
                     }, {
                         "id": "mapview_tools",
                         "tools": [

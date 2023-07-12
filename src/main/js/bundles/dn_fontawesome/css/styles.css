@@ -13,43 +13,47 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  /*
-    Created on : 13.03.2017, 09:48:17
-    Author     : juku
+/*
+  Created on : 13.03.2017, 09:48:17
+  Author     : juku
 */
 
+@import "all.min.css";
 
-  @import "all.min.css";
+.dijitIcon[class*="fa-"],
+.ctAppRoot .dijitIcon[class*="fa-"] {
+    display: inline-block;
+    font-size: inherit;
+}
 
-/*TODO: Add missing FA prefixes*/
-
-  .dijitIcon[class*="fa-"],
-  .ctAppRoot .dijitIcon[class*="fa-"] {
-      display: inline-block;
-      font-size: inherit;
-  }
-
-  /*Brands*/
-  .fab,
-  .dijitIcon.fab,
-  .ctAppRoot .dijitIcon.fab {
-      font-family: 'Font Awesome 5 Brands';
-  }
-
-  /*Regular*/
-  .far .dijitIcon.far,
-  .ctAppRoot .dijitIcon.far {
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 400;
-  }
-
-  /*SOLID*/
-  .fas,
-  .dijitIcon.fas,
-  .ctAppRoot .dijitIcon.fas,
-  .fa,
-  .dijitIcon.fa,
-  .ctAppRoot .dijitIcon.fa {
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 900;
-  }
+/* setting required fonts with high specificity for usage as dijit Icon */
+.dijitIcon.fa-brands,
+.dijitIcon.fab,
+.ctAppRoot .dijitIcon.fa-brands,
+.ctAppRoot .dijitIcon.fab {
+    font-family: "Font Awesome 6 Brands"
+}
+.dijitIcon.fa-classic,
+.dijitIcon.fa-regular,
+.dijitIcon.fa-solid,
+.dijitIcon.far,
+.dijitIcon.fas,
+.ctAppRoot .dijitIcon.fa-classic,
+.ctAppRoot .dijitIcon.fa-regular,
+.ctAppRoot .dijitIcon.fa-solid,
+.ctAppRoot .dijitIcon.far,
+.ctAppRoot .dijitIcon.fas {
+    font-family: "Font Awesome 6 Free";
+}
+.dijitIcon.fa-regular,
+.dijitIcon.far,
+.ctAppRoot .dijitIcon.fa-regular,
+.ctAppRoot .dijitIcon.far {
+    font-weight: 400;
+}
+.dijitIcon.fa-solid,
+.dijitIcon.fas,
+.ctAppRoot .dijitIcon.fa-solid,
+.ctAppRoot .dijitIcon.fas {
+    font-weight: 900;
+}

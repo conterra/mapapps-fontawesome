@@ -16,7 +16,8 @@
     limitations under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.conterra.devnet</groupId>
@@ -394,7 +395,8 @@
                             <goal>buildPacksProperties</goal>
                         </goals>
                         <configuration>
-                            <!-- don't list not shipped bundles in the META-INF\js-registry-packs.properties file -->
+                            <!-- don't list not shipped bundles in the
+                            META-INF\js-registry-packs.properties file -->
                             <scanPackagesExcludes>apps/**,bundles/sample_tests</scanPackagesExcludes>
                         </configuration>
                     </execution>
@@ -422,7 +424,8 @@
                             <goal>deployAppTemplate</goal>
                         </goals>
                         <configuration>
-                            <templateFile>${project.build.directory}/${project.artifactId}-sample-app.zip</templateFile>
+                            <templateFile>
+                                ${project.build.directory}/${project.artifactId}-sample-app.zip</templateFile>
                             <templateResources>
                                 <templateResource>
                                     <directory>${js.build.outputPath}/apps/sample</directory>
@@ -531,6 +534,7 @@
         <skip.apps.upload>true</skip.apps.upload>
         <!-- enable this if "upload" profile should pre-optimize apps -->
         <triggerPreOptimization>false</triggerPreOptimization>
+        <client.config.warnOnSlowGraphicsPerformance>false</client.config.warnOnSlowGraphicsPerformance>
     </properties>
     <profiles>
         <profile>
